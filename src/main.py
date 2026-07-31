@@ -4,8 +4,24 @@ from src.routers.expense_router import router as expense_router
 
 app = FastAPI(
     title="Smart Expense Tracker API",
-    description="REST API for managing personal expenses",
-    version="1.0.0"
+    description="""
+A REST API built with FastAPI for managing personal expenses.
+
+## Features
+
+- Add Expense
+- View Expenses
+- Filter by Category
+- Expense Summary
+- Delete Expense
+
+Created for the Software Engineering Apprenticeship Assignment.
+""",
+    version="1.0.0",
+    contact={
+        "name": "Abdul Rahman",
+        "email": "abdulrahman2.ar@gmail.com"
+    }
 )
 
 app.include_router(expense_router)
