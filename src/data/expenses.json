@@ -1,9 +1,30 @@
 [
     {
-        "id": "1aa310dd-a342-4ae2-8e29-c64a278fe72d",
+        "id": "63abeedf-8be0-463e-86b8-589e61a0b4b0",
         "title": "Pizza",
-        "amount": 300.0,
+        "amount": 299.0,
         "category": "Food",
-        "date": "2026-08-01"
+        "date": "2026-07-31"
+    },
+    {
+        "id": "c83460ba-9036-4e3a-ad61-7fac7dbbec7a",
+        "title": "Biryani",
+        "amount": 199.0,
+        "category": "Food",
+        "date": "2026-07-31"
+    },
+    {
+        "id": "48a2c274-a49b-4cd7-bebe-d45c974dfcc7",
+        "title": "Delhi",
+        "amount": 19990.0,
+        "category": "Travel",
+        "date": "2026-07-31"
+    },
+    {
+        "id": "a0665585-94c4-402f-8502-3209589985d6",
+        "title": "Apple",
+        "amount": 100.0,
+        "category": "food",
+        "date": "2026-07-31"
     }
 ]

@@ -11,5 +11,16 @@ class ExpenseCreate(BaseModel):
     date: date
 
 
-class ExpenseResponse(ExpenseCreate):
+class ExpenseResponse(BaseModel):
     id: UUID
+    title: str
+    amount: float
+    category: str
+    date: date
+
+class SummaryResponse(BaseModel):
+    category: str | None = None
+    total: float
+
+class MessageResponse(BaseModel):
+    message: str

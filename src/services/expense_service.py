@@ -1,4 +1,5 @@
 from uuid import uuid4
+from fastapi import HTTPException
 
 from src.models.expense_model import ExpenseCreate
 from src.utils.json_handler import load_expenses, save_expenses
@@ -46,3 +47,50 @@ def get_expenses(category: str = None):
         ]
 
     return expenses
+
+
+def get_summary(category: str = None):
+    """
+    Calculate total expenses.
+    If category is provided, calculate only that category.
+    """
+
+    expenses = load_expenses()
+
+    if category:
+        expenses = [
+            expense
+            for expense in expenses
+            if expense["category"].lower() == category.lower()
+        ]
+
+    total = sum(expense["amount"] for expense in expenses)
+
+    return {
+        "category": category,
+        "total": total
+    }
+
+def delete_expense(expense_id: str):
+    """
+    Delete an expense by ID.
+    """
+
+    expenses = load_expenses()
+
+    for expense in expenses:
+
+        if expense["id"] == expense_id:
+
+            expenses.remove(expense)
+
+            save_expenses(expenses)
+
+            return {
+                "message": "Expense deleted successfully"
+            }
+
+    raise HTTPException(
+        status_code=404,
+        detail="Expense not found"
+    )
