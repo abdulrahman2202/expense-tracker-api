@@ -101,6 +101,23 @@ def test_summary_by_category():
     assert data["total"] == 300
 
 
+def test_search():
+
+    create_sample_expense()
+
+    response = client.get(
+        "/expenses/search?q=Pizza"
+    )
+
+    assert response.status_code == 200
+
+    data = response.json()
+
+    assert len(data) == 1
+
+    assert data[0]["title"] == "Pizza"
+
+
 def test_invalid_amount():
 
     expense = {

@@ -94,3 +94,22 @@ def delete_expense(expense_id: str):
         status_code=404,
         detail="Expense not found"
     )
+
+
+def search_expenses(query: str):
+    """
+    Search expenses by title or category.
+    """
+
+    expenses = load_expenses()
+
+    query = query.lower()
+
+    results = [
+        expense
+        for expense in expenses
+        if query in expense["title"].lower()
+        or query in expense["category"].lower()
+    ]
+
+    return results

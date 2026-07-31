@@ -12,6 +12,7 @@ from src.services.expense_service import (
     get_expenses,
     get_summary,
     delete_expense,
+    search_expenses
 )
 
 router = APIRouter(
@@ -60,6 +61,20 @@ def summary(
     )
 ):
     return get_summary(category)
+
+@router.get(
+    "/search",
+    response_model=list[ExpenseResponse],
+    summary="Search expenses",
+    description="Search expenses by title or category."
+)
+def search(
+    q: str = Query(
+        ...,
+        description="Search keyword"
+    )
+):
+    return search_expenses(q)
 
 
 @router.delete(

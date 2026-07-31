@@ -2,7 +2,7 @@
 
 A RESTful Expense Tracker API built with **FastAPI** that allows users to manage personal expenses. This project was developed as part of the **Software Engineering Apprenticeship Assignment 2026**.
 
-![Python](https://img.shields.io/badge/Python-3.12-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.141.1-green) ![Pytest](https://img.shields.io/badge/Tests-9%20Passed-success)
+![Python](https://img.shields.io/badge/Python-3.12-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.141.1-green) ![Pytest](https://img.shields.io/badge/Tests-10%20Passed-success)
 
 
 ## Project Information
@@ -13,6 +13,7 @@ A RESTful Expense Tracker API built with **FastAPI** that allows users to manage
 - **Storage:** JSON File
 - **API Documentation:** Swagger (OpenAPI)
 - **Testing:** Pytest
+- **Version:** 1.0.0
 
 ---
 
@@ -23,9 +24,11 @@ A RESTful Expense Tracker API built with **FastAPI** that allows users to manage
 - Filter expenses by category
 - Calculate total expenses
 - Calculate total expenses by category
+- Search expenses by title or category *(Optional Bonus Feature)*
 - Delete an expense
 - Automatic request validation using Pydantic
 - Interactive API documentation with Swagger (OpenAPI)
+- Local JSON file storage (No database required)
 - Automated tests using Pytest
 
 ---
@@ -66,6 +69,14 @@ expense-tracker-api/
 ├── pytest.ini
 └── .gitignore
 ```
+---
+## Prerequisites
+
+Before running this project, ensure you have:
+
+- Python 3.12 or later
+- Git
+- pip
 
 ---
 
@@ -74,7 +85,7 @@ expense-tracker-api/
 ## 1. Clone the repository
 
 ```bash
-git clone https://github.com/abdulrahman2202/expense-tracker-api
+git clone https://github.com/abdulrahman2202/expense-tracker-api.git
 ```
 
 ## 2. Move into the project
@@ -115,17 +126,18 @@ pip install -r requirements.txt
 
 ---
 
-# ▶️ Run the Server
+# ▶️ Run the Development Server
 
 ```bash
 uvicorn src.main:app --reload
 ```
 
-Server
+The API will start at:
 
 ```
 http://127.0.0.1:8000
 ```
+
 
 ---
 
@@ -154,7 +166,7 @@ pytest -v
 Expected
 
 ```
-9 passed
+10 passed
 ```
 
 ---
@@ -212,6 +224,15 @@ GET /expenses/summary?category=Food
 
 ---
 
+## Search Expenses
+
+```
+GET /expenses/search?q=Pizza
+```
+Searches expenses by **title** or **category**.
+
+---
+
 ## Delete Expense
 
 ```
@@ -235,15 +256,16 @@ The API automatically validates:
 
 The project contains automated tests using **Pytest**.
 
-Tests cover:
+The automated test suite covers:
 
 - Home endpoint
 - Create expense
-- Get all expenses
-- Filter by category
+- Retrieve all expenses
+- Filter expenses by category
 - Expense summary
 - Category summary
-- Invalid amount validation
+- Search expenses
+- Invalid validation
 - Delete expense
 - Delete invalid expense
 
