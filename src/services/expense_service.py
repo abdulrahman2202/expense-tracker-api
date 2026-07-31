@@ -28,3 +28,21 @@ def create_expense(expense: ExpenseCreate):
     save_expenses(expenses)
 
     return new_expense
+
+
+def get_expenses(category: str = None):
+    """
+    Get all expenses.
+    If category is provided, return only matching expenses.
+    """
+
+    expenses = load_expenses()
+
+    if category:
+        expenses = [
+            expense
+            for expense in expenses
+            if expense["category"].lower() == category.lower()
+        ]
+
+    return expenses
