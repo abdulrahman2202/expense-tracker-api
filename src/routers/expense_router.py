@@ -49,6 +49,7 @@ def get_all_expenses(
 @router.get(
     "/summary",
     response_model=SummaryResponse,
+    response_model_exclude_none=True,
     summary="Calculate expense summary",
     description="Returns the total expenses overall or for a specific category."
 )

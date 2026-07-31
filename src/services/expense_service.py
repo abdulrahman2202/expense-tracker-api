@@ -50,10 +50,6 @@ def get_expenses(category: str = None):
 
 
 def get_summary(category: str = None):
-    """
-    Calculate total expenses.
-    If category is provided, calculate only that category.
-    """
 
     expenses = load_expenses()
 
@@ -64,12 +60,16 @@ def get_summary(category: str = None):
             if expense["category"].lower() == category.lower()
         ]
 
-    total = sum(expense["amount"] for expense in expenses)
+        return {
+            "category": category,
+            "total": sum(expense["amount"] for expense in expenses)
+        }
 
     return {
-        "category": category,
-        "total": total
+        "total": sum(expense["amount"] for expense in expenses)
     }
+
+    
 
 def delete_expense(expense_id: str):
     """
